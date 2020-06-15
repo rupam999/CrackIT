@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { 
-  View, Text, StyleSheet, StatusBar, Dimensions, ActivityIndicator, Alert, SafeAreaView
+  View, Text, StyleSheet, StatusBar, Dimensions, ActivityIndicator, Alert,
 } from 'react-native';
 import {
   Container, Form, Item, Input, Button, Picker
@@ -68,7 +68,7 @@ export const Register = ({navigation}: any) => {
     }
 
     return (
-      <SafeAreaView>
+      <>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
         <Container style={ styles.FullBody }>
           <Container style={ styles.MainContainer }>
@@ -140,7 +140,7 @@ export const Register = ({navigation}: any) => {
             </View>
           </Container>
         </Container>
-      </SafeAreaView>
+      </>
     );
 }
 

@@ -27,15 +27,15 @@ export const Login = ({navigation}: any) => {
 
     if(showLoading){
         return(
-          <SafeAreaView style={styles.loadScreen}>
+          <View style={styles.loadScreen}>
             <ActivityIndicator size={40} color='#28AAD8' />
             <Text>Taking you to a secure connection...</Text>
-          </SafeAreaView>
+          </View>
         );
     }
 
     return (
-      <SafeAreaView>
+      <>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
         <Container style={ styles.FullBody }>
           <Container style={ styles.MainContainer }>
@@ -68,7 +68,7 @@ export const Login = ({navigation}: any) => {
             </View>
           </Container>
         </Container>
-      </SafeAreaView>
+      </>
     );
 }
 

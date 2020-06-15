@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-    View, StyleSheet, Dimensions, StatusBar, Image,  SafeAreaView
+    View, StyleSheet, Dimensions, StatusBar, Image, 
 } from 'react-native';
 import {
     Text, Container, Button
@@ -11,7 +11,7 @@ const height = Dimensions.get('screen').height;
 
 export const IntroductionScreen = ({navigation}: any) => {
     return (
-        <SafeAreaView>
+        <>
             <Container style={ styles.FullBody }>
                 <Container style={ styles.MainContent }>
                     <Image
@@ -29,7 +29,7 @@ export const IntroductionScreen = ({navigation}: any) => {
                     <Text style={ styles.accountText }>Already have an Account? <Text style={ styles.LoginText } onPress={ () => { navigation.navigate('Login') } }>Login Now</Text></Text>
                 </Container>
             </Container>
-        </SafeAreaView>
+        </>
     );
 }
 
