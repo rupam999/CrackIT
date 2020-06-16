@@ -10,30 +10,23 @@ import {useState} from 'react';
 
 const {width, height} = Dimensions.get('screen');
 
-const InitialTest = (props: InitialTestProps) => {
-    const [firstAnswer1, setFirstAnswer1] = useState('qoneFirst');
-    const [firstAnswer2, setFirstAnswer2] = useState('qoneSecond');
+const InitialTest = (props: any) => {
+    // For First Question answer (1 State, format -> Quesction Number Answer)
+    const [firstAnswer, setFirstAnswer] = useState('');
   return (
     <>
     <StatusBar backgroundColor="#fff" barStyle='dark-content' />
     <ScrollView style={{width, height}}>
-        
-        {/* <Container style={styles.MainBodyContainer}>
-           
-        </Container>     */}
-        <Text>Hello World!....</Text>
         <View>
-            <RadioButton
-            value="first"
-            status={checked === 'qoneFirst' ? 'checked' : 'unchecked'}
-            onPress={() => { Alert.alert('ok 1st') }}
-            />
-            <RadioButton
-            value="second"
-            status={checked === 'qoneSecond' ? 'checked' : 'unchecked'}
-            onPress={() =>{Alert.alert('ok')}}
-            />
-      </View>
+          <Text>1) A farmer travelled a distance of 61 km in 9 hours. He travelled partly on foot at 4 km/hr and partly on bicycle at 9 km/hr. The distance travelled on foot is:</Text>
+          <RadioButton.Group
+            onValueChange={value => setFirstAnswer(value)}
+            value={firstAnswer}
+          >
+            <RadioButton.Item label="First item" value="first answer" />
+            <RadioButton.Item label="Second item" value="second answer" />
+          </RadioButton.Group>
+        </View>
         <Text>Hello World!....</Text>
         <Text>Hello World!....</Text>
         <Text>Hello World!....</Text>
