@@ -39,7 +39,13 @@ export const Home = ({navigation}: any) => {
         },
       }}
       >
-      <Tab.Screen name="InitialUserHome" component={UserHome} />
+      <Tab.Screen 
+        name="InitialUserHome" 
+        component={UserHome} 
+        options={{
+          tabBarLabel: 'Home',
+        }}
+      />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );

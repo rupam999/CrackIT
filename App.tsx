@@ -6,6 +6,7 @@ import {IntroductionScreen} from './src/Screens/SignIn-flow';
 import {Login} from './src/Screens/SignIn-flow';
 import {Register} from './src/Screens/SignIn-flow';
 import {Home} from './src/Navigators';
+import Dashboard from './src/Screens/User/components/UserDashboard';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const App = () => {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Dashboard" component={Dashboard} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
