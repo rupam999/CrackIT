@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "-": "0.0.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-firebase/app": "^7.2.1",
     "@react-navigation/bottom-tabs": "^5.5.2",
@@ -18,12 +19,17 @@
     "native-base": "^2.13.12",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-dashboard": "0.0.4",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-paper": "^3.10.1",
+    "react-native-pdf": "^6.1.2",
     "react-native-reanimated": "^1.9.0",
     "react-native-safe-area-context": "^3.0.5",
     "react-native-screens": "^2.8.0",
-    "react-native-vector-icons": "^6.6.0"
+    "react-native-simple-radio-button": "^2.7.4",
+    "react-native-vector-icons": "^6.6.0",
+    "rn-fetch-blob": "^0.12.0",
+    "save": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

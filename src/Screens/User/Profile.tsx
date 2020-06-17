@@ -26,26 +26,26 @@ export const Profile = ({navigation}: any) => {
                 <Title style={{padding: 10}}>Insights</Title>
                 <Bar
                     first={false}
-                    title={'Edit Profile'}
-                    iconName={'edit'}
+                    title={'DashBoard'}
+                    iconName={'menu'}
+                    callBack={() => navigation.navigate('Dashboard')}
+                />
+                <Bar
+                    first={false}
+                    title={'Assignments'}
+                    iconName={'book'}
                     callBack={() => navigation.navigate('EditProfile')}
                 />
                 <Bar
                     first={false}
-                    title={'Edit Profile'}
-                    iconName={'edit'}
+                    title={'Time Till Next Test'}
+                    iconName={'clock'}
                     callBack={() => navigation.navigate('EditProfile')}
                 />
                 <Bar
                     first={false}
-                    title={'Edit Profile'}
-                    iconName={'edit'}
-                    callBack={() => navigation.navigate('EditProfile')}
-                />
-                <Bar
-                    first={false}
-                    title={'Edit Profile'}
-                    iconName={'edit'}
+                    title={'Assignment Answers'}
+                    iconName={'book'}
                     callBack={() => navigation.navigate('EditProfile')}
                 />
                 <Bar
