@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { 
-  View, Text, StyleSheet, StatusBar, Dimensions, ActivityIndicator, Alert
+  View, Text, StyleSheet, StatusBar, Dimensions, ActivityIndicator, Alert,
 } from 'react-native';
 import {
   Container, Form, Item, Input, Button, Picker
@@ -60,10 +60,10 @@ export const Register = ({navigation}: any) => {
 
     if(showLoading){
       return(
-        <View style={styles.loadScreen}>
+        <SafeAreaView style={styles.loadScreen}>
           <ActivityIndicator size={40} color='28AAD8' />
           <Text>Taking you to a secure connection...</Text>
-        </View>
+        </SafeAreaView>
       );
     }
 

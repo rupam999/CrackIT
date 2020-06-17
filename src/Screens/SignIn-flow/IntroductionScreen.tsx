@@ -12,7 +12,6 @@ const height = Dimensions.get('screen').height;
 export const IntroductionScreen = ({navigation}: any) => {
     return (
         <>
-            <StatusBar backgroundColor='#fff' barStyle='dark-content' />
             <Container style={ styles.FullBody }>
                 <Container style={ styles.MainContent }>
                     <Image
