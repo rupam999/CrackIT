@@ -1,33 +1,113 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet, Alert } from 'react-native';
-import Dashboard from 'react-native-dashboard';
- 
-const items = [
-  { name: 'QUANTATIVE', background: '#3498db', icon: 'user' },
-  { name: 'VERBAL', background: '#ef0202', icon: 'user' },
-  { name: 'READING COMPREHSION', background: '#efcf02', icon: 'user' },
-  { name: 'LOGICAL REASONING', background: '#02ef1d', icon: 'user' },
-  { name: 'DATA INTERPRETATION', background: '#02cbef', icon: 'user' },
-  { name: 'CALENDER', background: '#ef5802', icon: 'calendar' },
-];
- 
-const UserDashboard = (props: any) =>  {
-  const _card = (el: any) => {
-    console.log('Card: ' + el.name)
-  };
-  
-  return (
-    <View style={styles.container}>
-      <Dashboard items={items} background={true} card={_card} column={2} onPress={ () => Alert.alert('...10')} />
-    </View>
-  );
-}
- 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ecf0f1',
-  },
-});
+import * as React from 'react';
+import { Text, View, StyleSheet, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import { Container, Row, Col } from 'native-base';
+import CustomIcon from 'react-native-vector-icons/FontAwesome5';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import {getBackgroundColor} from '../../../api/getBackgroundColor';
 
-export default UserDashboard;
+// interface userDashboardProps {}
+
+const {width, height} = Dimensions.get('screen');
+
+const userDashboard = (props: any) => {
+  return (
+    <Container style={styles.container}>
+        <Row>
+            <Col>
+                <TouchableWithoutFeedback onPress={() => props.nav.navigate('TopicDescription')}>
+                    <View style={[styles.TopicViewLeft, {backgroundColor: getBackgroundColor('Quantative', 30, 30),}]}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
+                            <CustomIcon name="square-root-alt" size={35} color="#ddd" />
+                            <Text style={styles.TopicName}>Quantative</Text>
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+            </Col>
+            <Col>
+                <TouchableWithoutFeedback>
+                    <View style={[styles.TopicViewRight, {backgroundColor: getBackgroundColor('verbal', 30, 30),}]}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
+                            <CustomIcon name="square-root-alt" size={35} color="#ddd" />
+                            <Text style={styles.TopicName}>Verbal</Text>   
+                        </View>                     
+                    </View>
+                </TouchableWithoutFeedback>
+            </Col>
+        </Row>
+
+        <Row>
+            <Col>
+                <TouchableWithoutFeedback>
+                    <View style={[styles.TopicViewLeft, {backgroundColor: getBackgroundColor('Reading Compreshion', 30, 30),}]}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
+                            <CustomIcon name="square-root-alt" size={35} color="#ddd" />
+                            <Text style={styles.TopicName}>Reading Compreshion</Text>
+                        </View>                     
+                    </View>
+                </TouchableWithoutFeedback>
+            </Col>
+            <Col>
+                <TouchableWithoutFeedback>
+                    <View style={[styles.TopicViewRight, {backgroundColor: getBackgroundColor('Logical Resoning', 30, 30),}]}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
+                            <CustomIcon name="brain" size={35} color="#ddd" />
+                            <Text style={styles.TopicName}>Logical Resoning</Text>   
+                        </View>                     
+                    </View>
+                </TouchableWithoutFeedback>
+            </Col>
+        </Row>
+
+        <Row>
+            <Col>
+                <TouchableWithoutFeedback>
+                    <View style={[styles.TopicViewLeft, {backgroundColor: getBackgroundColor('Data Interpretation', 30, 30),}]}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
+                            <CustomIcon name="table" size={35} color="#ddd" />
+                            <Text style={styles.TopicName}>Data Interpretation</Text>   
+                        </View>                     
+                    </View>
+                </TouchableWithoutFeedback>
+            </Col>
+            <Col>
+                <TouchableWithoutFeedback>
+                    <View style={[styles.TopicViewRight, {backgroundColor: getBackgroundColor('Calender', 30, 30),}]}>
+                        <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
+                            <FeatherIcon name="calendar" size={35} color="#ddd" />
+                            <Text style={styles.TopicName}>Result</Text>   
+                        </View>                     
+                    </View>
+                </TouchableWithoutFeedback>
+            </Col>
+        </Row>
+    </Container>
+  );
+};
+
+export default userDashboard;
+
+const styles = StyleSheet.create({
+    container: {
+        width,
+        height,
+        marginLeft: '4%',
+        marginRight: '4%',
+        marginTop: '4%'
+    },
+    TopicViewLeft: {
+        width: '90%',
+        marginRight: '0%',
+        height: 180,
+        borderRadius: 10,
+    },
+    TopicViewRight: {
+        width: '86%',
+        height: 180,
+        borderRadius: 10,
+    },
+    TopicName: {
+        textAlign: 'center',
+        justifyContent: 'center',
+        color: '#fff'
+    },
+});
