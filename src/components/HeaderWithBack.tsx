@@ -5,25 +5,25 @@ import CustomIcon from 'react-native-vector-icons/Feather';
 
 // interface MainHeaderProps {}
 
-const MainHeader = (props: any) => {
-  const {title} = props;
+const HeaderWithBack = (props: any) => {
+  const {title, nav} = props;
   return (
     <>
     <StatusBar backgroundColor="#fff" barStyle='dark-content' />
     {/* <Container> */}
         <Header style={styles.MainHeaderStyle}>
           <Left>
-            {/* <Button transparent>
-              <Icon name='arrow-back' />
-            </Button> */}
+            <Button transparent onPress={() => nav.goBack()}>
+              <CustomIcon name='arrow-left' size={25} />
+            </Button>
           </Left>
           <Body>
             <Title style={styles.HeaderTitleStyle}>{title}</Title>
           </Body>
           <Right>
-            <Button transparent>
+            {/* <Button transparent>
               <CustomIcon name="user" size={25} />
-            </Button>
+            </Button> */}
           </Right>
         </Header>
     {/* </Container> */}
@@ -31,7 +31,7 @@ const MainHeader = (props: any) => {
   );
 };
 
-export default MainHeader;
+export default HeaderWithBack;
 
 const styles = StyleSheet.create({
   container: {},

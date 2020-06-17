@@ -70,7 +70,7 @@ const userDashboard = (props: any) => {
                 </TouchableWithoutFeedback>
             </Col>
             <Col>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => props.nav.navigate('ResultGraph')}>
                     <View style={[styles.TopicViewRight, {backgroundColor: getBackgroundColor('Calender', 30, 30),}]}>
                         <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
                             <FeatherIcon name="calendar" size={35} color="#ddd" />
