@@ -20,61 +20,76 @@ const resultGraph = ({navigation}: any) => {
   return (
     <Container style={styles.container}>
         <HeaderWithBack title='My Progress' nav={navigation} />
-        <Container style={styles.Heading}>
-            <Text style={styles.overallAvg}>Overall Average</Text>
-            <Text style={styles.MyMarks}>7.06</Text>
-        </Container>
-        <Container style={styles.GraphContent}>
-            <LineChart
-                data={{
-                labels: ["Feb 03", "Feb 18", "May 03", "May 18", "Jun 03", "Jun 18"],
-                datasets: [
-                    {
-                    data: [
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100
+        <Container style={{ paddingLeft: '2%', }}>
+            <Container style={styles.Heading}>
+                <Text style={styles.overallAvg}>Overall Average</Text>
+                <Text style={styles.MyMarks}>7.06</Text>
+            </Container>
+            <Container style={styles.GraphContent}>
+                <LineChart
+                    data={{
+                    labels: ["Feb 03", "Feb 18", "May 03", "May 18", "Jun 03", "Jun 18"],
+                    datasets: [
+                        {
+                        data: [
+                            Math.random() * 100,
+                            Math.random() * 100,
+                            Math.random() * 100,
+                            Math.random() * 100,
+                            Math.random() * 100,
+                            Math.random() * 100
+                        ]
+                        }
                     ]
+                    }}
+                    width={width*.98}
+                    height={220}
+                    // yAxisLabel={null}
+                    // yAxisSuffix="M"
+                    yAxisInterval={1}
+                    chartConfig={{
+                    backgroundColor: "#fff",
+                    backgroundGradientFrom: "#fff",
+                    backgroundGradientTo: "#fff",
+                    decimalPlaces: 0,
+                    color: (opacity = 1) => `rgba(40, 170, 216, ${opacity})`,
+                    labelColor: (opacity = 1) => `rgba(40, 170, 216, ${opacity})`,
+                    style: {
+                        borderRadius: 16
+                    },
+                    propsForDots: {
+                        r: "6",
+                        strokeWidth: "2",
+                        stroke: "#28AAD8"
                     }
-                ]
-                }}
-                width={width*.98}
-                height={220}
-                // yAxisLabel={null}
-                // yAxisSuffix="M"
-                yAxisInterval={1}
-                chartConfig={{
-                backgroundColor: "#fff",
-                backgroundGradientFrom: "#fff",
-                backgroundGradientTo: "#fff",
-                decimalPlaces: 0,
-                color: (opacity = 1) => `rgba(40, 170, 216, ${opacity})`,
-                labelColor: (opacity = 1) => `rgba(40, 170, 216, ${opacity})`,
-                style: {
-                    borderRadius: 16
-                },
-                propsForDots: {
-                    r: "6",
-                    strokeWidth: "2",
-                    stroke: "#28AAD8"
-                }
-                }}
-                bezier
-                style={{
-                    marginVertical: 6,
-                    marginHorizontal: 0,
-                    borderRadius: 16,
-                    position: 'relative',
-                    left: '-6.5%',
-                }}
-            />
-            <View>
-                <Text>10</Text>
-                <Text>Written</Text>
-            </View>
+                    }}
+                    bezier
+                    style={{
+                        marginVertical: 6,
+                        marginHorizontal: 0,
+                        borderRadius: 16,
+                        position: 'relative',
+                        left: '-6.5%',
+                    }}
+                />
+                <View style={styles.lowerView}>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <Text style={styles.writtenText}>Test Taken &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>
+                        <Text style={styles.numberOfTestWritten}>9</Text>
+                        <Text></Text>
+                    </View>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <Text style={styles.writtenText}>Projected Score</Text>
+                        <Text style={styles.numberOfTestWritten}>8</Text>
+                        <Text></Text>
+                    </View>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <Text style={styles.writtenText}>Test to go &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</Text>
+                        <Text style={styles.numberOfTestWritten}>15</Text>
+                        <Text></Text>
+                    </View>
+                </View>
+            </Container>
         </Container>
     </Container>
   );
@@ -85,7 +100,6 @@ export default resultGraph;
 const styles = StyleSheet.create({
     container: {
         height,
-        paddingLeft: '2%',
     },
     Heading: {
         width,
@@ -106,5 +120,19 @@ const styles = StyleSheet.create({
     GraphContent: {
         width,
         flex: 2.5/3,
+    },
+    numberOfTestWritten: {
+        marginLeft: '5%',
+        color: '#28AAD8',
+        fontSize: 30,
+    },
+    writtenText: {
+        marginLeft: '3.5%',
+        color: '#000',
+        fontSize: 20,
+        textAlign: 'left',
+    },
+    lowerView: {
+        marginTop: '5%',
     },
 });

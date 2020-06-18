@@ -28,7 +28,7 @@ export const Profile = ({navigation}: any) => {
                     first={false}
                     title={'DashBoard'}
                     iconName={'menu'}
-                    callBack={() => navigation.navigate('Dashboard')}
+                    callBack={() => navigation.navigate('Home')}
                 />
                 <Bar
                     first={false}

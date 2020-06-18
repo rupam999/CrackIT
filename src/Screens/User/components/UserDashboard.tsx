@@ -24,10 +24,10 @@ const userDashboard = (props: any) => {
                 </TouchableWithoutFeedback>
             </Col>
             <Col>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => props.nav.navigate('Verbal')}>
                     <View style={[styles.TopicViewRight, {backgroundColor: getBackgroundColor('verbal', 30, 30),}]}>
                         <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
-                            <CustomIcon name="square-root-alt" size={35} color="#ddd" />
+                            <CustomIcon name="american-sign-language-interpreting" size={35} color="#ddd" />
                             <Text style={styles.TopicName}>Verbal</Text>   
                         </View>                     
                     </View>
@@ -40,14 +40,14 @@ const userDashboard = (props: any) => {
                 <TouchableWithoutFeedback>
                     <View style={[styles.TopicViewLeft, {backgroundColor: getBackgroundColor('Reading Compreshion', 30, 30),}]}>
                         <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
-                            <CustomIcon name="square-root-alt" size={35} color="#ddd" />
+                            <CustomIcon name="language" size={35} color="#ddd" />
                             <Text style={styles.TopicName}>Reading Compreshion</Text>
                         </View>                     
                     </View>
                 </TouchableWithoutFeedback>
             </Col>
             <Col>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => props.nav.navigate('Logical')}>
                     <View style={[styles.TopicViewRight, {backgroundColor: getBackgroundColor('Logical Resoning', 30, 30),}]}>
                         <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 75 }}>
                             <CustomIcon name="brain" size={35} color="#ddd" />

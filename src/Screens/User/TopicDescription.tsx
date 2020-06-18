@@ -8,7 +8,7 @@ import Pdf from 'react-native-pdf';
 const {width, height} = Dimensions.get('screen');
 
 const TopicDescription = (props: any) => {
-    const source = {uri:'https://filebin.net/upb3fo0k004otqjy/1.1.pdf?t=6xnz686v',cache:true};
+    const source = {uri:'https://www.practiceaptitudetests.com/aptitude-test.pdf',cache:true};
 
     return (
         <Container style={styles.container}>
