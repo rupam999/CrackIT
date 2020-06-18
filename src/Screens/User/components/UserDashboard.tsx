@@ -32,7 +32,7 @@ const userDashboard = (props: any) => {
                         </View>                     
                     </View>
                 </TouchableWithoutFeedback>
-            </Col>
+            </Col> 
         </Row>
 
         <Row>
