@@ -1,12 +1,12 @@
 import React, { Component, useState } from 'react';
 import { 
-  View, Text, StyleSheet, StatusBar, Dimensions, ActivityIndicator, Alert,
+  View, Text, StyleSheet, StatusBar, Dimensions, ActivityIndicator, Alert, SafeAreaView
 } from 'react-native';
 import {
   Container, Form, Item, Input, Button, Picker
 } from 'native-base';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -24,52 +24,54 @@ export const Register = ({navigation}: any) => {
     const [weakPassword, setWeakPassword] = useState(false);
 
     const signUpFunction = () => {
-        // if(data.email && data.password){
-        // setEmptyField(false);
-        // if(data.password === data.conPass){
-        //     setShowLoading(true);
-            // auth()
-            // .createUserWithEmailAndPassword(data.email, data.password)
-            // .then( (userCredentials: any) => {
-            //     return userCredentials.user.updateProfile({
-            //     displayName: data.name,
-            //     // phoneNumber: data.number //Not working
-            //     })
-            // })
-            // .then(() => nav.navigate('UserDataChecking'))
-            // .catch((error: any) => {
-            //     if (error.code === 'auth/email-already-in-use') {
-            //     // alert('That email address is already in use!');
-            //     setEmailPresent(true);
-            //     } else if (error.code === 'auth/invalid-email') {
-            //     // alert('That email address is invalid!');
-            //     setInvalidEmail(true);
-            //     } else if (error.code === 'auth/weak-password') {
-            //     // alert('weak password');
-            //     setWeakPassword(true);
-            //     } else
-            //     Alert.alert(error);
-            // });
-        // } else {
-        //     setPasswordCheckError(true);
-        // }
-        // } else{ 
-        //    setEmptyField(true);
-        // }
+        if(email && password){
+        setEmptyField(false);
+        if(password === conPass){
+            setShowLoading(true);
+            auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then( (userCredentials: any) => {
+                console.log('called');
+                return userCredentials.user.updateProfile({
+                displayName: name,
+                // phoneNumber: data.number //Not working
+                })
+            })
+            .then(() => navigation.navigate('UserDataChecking'))
+            .catch((error: any) => {
+                if (error.code === 'auth/email-already-in-use') {
+                // alert('That email address is already in use!');
+                setEmailPresent(true);
+                } else if (error.code === 'auth/invalid-email') {
+                // alert('That email address is invalid!');
+                setInvalidEmail(true);
+                } else if (error.code === 'auth/weak-password') {
+                // alert('weak password');
+                setWeakPassword(true);
+                } else
+                Alert.alert(error);
+            });
+        } else {
+            setPasswordCheckError(true);
+        }
+        } else{ 
+           setEmptyField(true);
+        }
     }
 
-    if(showLoading){
-      return(
-        <SafeAreaView style={styles.loadScreen}>
-          <ActivityIndicator size={40} color='28AAD8' />
-          <Text>Taking you to a secure connection...</Text>
-        </SafeAreaView>
-      );
-    }
+    // if(showLoading){
+    //   return(
+    //     <SafeAreaView style={styles.loadScreen}>
+    //       <ActivityIndicator size={40} color='28AAD8' />
+    //       <Text>Taking you to a secure connection...</Text>
+    //     </SafeAreaView>
+    //   );
+    // }
 
     return (
       <>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+        {!showLoading ? 
         <Container style={ styles.FullBody }>
           <Container style={ styles.MainContainer }>
             <Text style={ styles.MainHeading }>Crack<Text style={ styles.ColorHeading }>IT</Text></Text>
@@ -140,6 +142,12 @@ export const Register = ({navigation}: any) => {
             </View>
           </Container>
         </Container>
+        : 
+        <SafeAreaView style={styles.loadScreen}>
+          <ActivityIndicator size={40} color='28AAD8' />
+          <Text>Taking you to a secure connection...</Text>
+        </SafeAreaView>
+        }
       </>
     );
 }

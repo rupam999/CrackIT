@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
   HeaderTitleStyle: {
     color: '#000',
     position: 'relative',
-    marginLeft: '50%'
+    left: '50%'
   },
 });

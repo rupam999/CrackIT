@@ -6,7 +6,7 @@ import {
     Container, Form, Item, Input, Button
 } from 'native-base';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 const width = Dimensions.get('screen').width;
 const height = Dimensions.get('screen').height;
@@ -16,27 +16,19 @@ export const Login = ({navigation}: any) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const loginFunction = (email: String, password: String) => {
+    const loginFunction = () => {
         setShowLoading(true);
-        navigation.navigate('Home');
-        // auth()
-        // .signInWithEmailAndPassword(data.email, data.password)
-        // .then(() => navigation.navigate('Home');)
-        // .catch( (error: any) => Alert.alert(error));
-    }
-
-    if(showLoading){
-        return(
-          <View style={styles.loadScreen}>
-            <ActivityIndicator size={40} color='#28AAD8' />
-            <Text>Taking you to a secure connection...</Text>
-          </View>
-        );
+        console.log(email, password)
+        auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => navigation.navigate('UserDataChecking'))
+        .catch( (error: any) => Alert.alert(error));
     }
 
     return (
       <>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+        {!showLoading ?
         <Container style={ styles.FullBody }>
           <Container style={ styles.MainContainer }>
             <Text style={ styles.MainHeading }>Crack<Text style={ styles.ColorHeading }>IT</Text></Text>
@@ -60,7 +52,7 @@ export const Login = ({navigation}: any) => {
                     onChangeText={ (pass) => setPassword(pass) }
                   />
                 </Item>
-                <Button style={ styles.btn } onPress={ () => loginFunction(email, password) }>
+                <Button style={ styles.btn } onPress={ loginFunction }>
                   <Text style={ styles.btnText }>Login</Text>
                 </Button>
                 <Text style={ styles.accountText }>Don't have an Account? <Text style={ styles.LoginText } onPress={ () => { navigation.navigate('Register') } }>Sign up Now</Text></Text>
@@ -68,6 +60,12 @@ export const Login = ({navigation}: any) => {
             </View>
           </Container>
         </Container>
+        :
+        <View style={styles.loadScreen}>
+          <ActivityIndicator size={40} color='#28AAD8' />
+          <Text>Taking you to a secure connection...</Text>
+        </View>
+        }
       </>
     );
 }

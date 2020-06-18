@@ -15,15 +15,17 @@ export const UserHome = ({navigation}: any) => {
       <StatusBar backgroundColor="#fff" barStyle='dark-content' />
       <Container style={styles.container}>
         <MainHeader title={'CrackIT'} />
-        { false ? 
+        { true ? 
           <Button onPress={() => navigation.navigate('InitialTest') } style={styles.takeATestbutton}>
             <Text style={{marginLeft: '35%', color: '#fff'}}>Take a Test Now</Text>
           </Button>
-        : <UserDashboard nav={navigation} /> }
+        : null }
+        <UserDashboard nav={navigation} />
       </Container>
     </>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
