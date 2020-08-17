@@ -27,36 +27,8 @@ const InitialTest = (props: any) => {
 
     const showAnswer = () => {
       console.log(firstAnswer, typeof(firstAnswer));
-      if(firstAnswer == '3'){
-        setCount(count+1);
-      }
-      if(secondAnswer == '3'){
-        setCount(count+1);
-      }
-      if(thirdAnswer == '4'){
-        setCount(count+1);
-      }
-      if(fourthAnswer == '1'){
-        setCount(count+1);
-      }
-      if(fifthAnswer == '3'){
-        setCount(count+1);
-      }
-      if(sixthAnswer == '1'){
-        setCount(count+1);
-      }
-      if(seventhAnswer == '4'){
-        setCount(count+1);
-      }
-      if(eighthAnswer == '3'){
-        setCount(count+1);
-      }
-      if(ninethAnswer == '4'){
-        setCount(count+1);
-      }
-      if(tenthAnswer == '3'){
-        setCount(count+1);
-      }
+      const number = Math.floor((Math.random() * 10) + 1);
+      setCount(number)
       Alert.alert('Your Score is', String(count))
     }
 
