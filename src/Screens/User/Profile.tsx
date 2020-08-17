@@ -1,16 +1,41 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Text, View, StyleSheet, SafeAreaView, StatusBar, Dimensions } from 'react-native';
 import { Title, Container } from 'native-base';
 import Star from './components/Star';
 import ProfilePic from './components/ProfilePic';
 import Bar from './components/Bar';
 import Settings from './components/Settings';
+import auth from '@react-native-firebase/auth';
 
 // interface ProfileProps {}
 
 const {width, height} = Dimensions.get('screen');
 
 export const Profile = ({navigation}: any) => {
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  const onAuthStateChanged = (user: any) => {
+    if(user) {
+      setUser(user.displayName);
+      console.log(user);
+    }
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
+
+  const logout = () => {
+    auth()
+    .signOut()
+    .then(() => navigation.navigate('Intro'));
+  }
+
   return (
     <SafeAreaView style={styles.container}>
         <StatusBar backgroundColor="#FFF" barStyle='dark-content' />
@@ -18,7 +43,7 @@ export const Profile = ({navigation}: any) => {
         <Container style={{ paddingTop: '5%' }}>
             <View style={styles.profileContainer}>
                 <ProfilePic />
-                <Title style={styles.userFullName}>Yuganshu Sanjay Tickoo</Title>
+                <Title style={styles.userFullName}>{user ? user : 'Anonymous'}</Title>
                 <Text>Bangalore</Text>
                 <Star />
             </View>
@@ -52,7 +77,7 @@ export const Profile = ({navigation}: any) => {
                     last={false}
                     title="Logout"
                     iconName={'log-out'}
-                    callBack={null}
+                    callBack={logout}
                 />
             </View>
         </Container>
